@@ -11,14 +11,45 @@ body {
 
 }
 
-#remember {
-    padding-top: 100px;
 
-}
-
-#author {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+#add {
     background-color: red;
+    font-size: 30px;
 }
+
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  #content-wrap {
+    padding-bottom: 2.5rem;
+  }
+  
+  #author {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: red;
+  }
+
+  #remember {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+  }
+  #test {
+      background-color: red;
+      width: 100px;
+      height: 90px;
+  }
+
+  #textarea {
+      padding-top: 10px;
+  }
+  
