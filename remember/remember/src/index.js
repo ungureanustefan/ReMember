@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Remember from "./components/remember";
-
-ReactDOM.render(<Remember />, document.getElementById("root"));
+import App from "./components/App";
+ReactDOM.render(<App />, document.getElementById("root"));

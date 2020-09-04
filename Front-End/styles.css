@@ -1,0 +1,166 @@
+body {
+    background-color: white;
+    position: relative;
+    text-align: center;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { 
+    text-align: center;
+ }
+ 
+ ::-moz-placeholder {  
+    text-align: center;
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center;
+ }
+
+#add {
+    background-color: rgb(255, 99, 71);
+    font-size: 15px;
+    height: 40px;
+    width: 82px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: thin;
+}
+
+#button {
+    padding-left: 20px;
+}
+
+#re {
+    font-weight: normal;
+}
+
+#member {
+    font-weight: normal;
+}
+
+
+#page-container {
+
+    padding-left: 40px;
+  }
+  
+  #content-wrap {
+    padding-bottom: 150px;
+  }
+  
+  #author {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 60px;
+    width: 80%;
+    height: 20px;
+    background-color: rgb(255, 99, 71);
+    padding-left: 60px;
+    border-style: solid;
+    border-width: thin;
+  }
+
+  #developer {
+      margin: 0;
+  }
+
+
+
+  #remember {
+      padding-top: 180px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+  }
+
+  #textarea {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 80px;
+      color: rgb(221, 221, 221);
+
+  }
+
+  #text {
+    border-style: solid;
+    border-width: thin;
+    font-size: 20px;
+    width: 701px;
+    height: 30px;
+    max-height: 300px;
+    background-color: rgb(221, 221, 221);
+  }
+
+  #test {
+      background-color: rgb(255, 99, 71);
+      width: 100px;
+      height: 90px;
+      border-style: solid;
+      border-width: thin;
+  }
+
+  #homepage {
+      padding-left: 100px;
+  }
+
+  #logging {
+      padding-right: 100px;
+  }
+  
+
+#list {
+    display: flex;
+    align-items: center;
+    flex-basis: 20px;
+    flex-wrap: wrap;
+}
+
+  h2,p {
+    font-size:100%;
+    font-weight:normal;
+  }
+
+  h2 {
+      margin-top: 4em;
+  }
+
+  ul {
+    padding:3em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    list-style:none;
+    margin-left: 285px;
+
+  }
+  ul li a {
+    overflow: auto;
+    border-style: solid;
+    border-width: thin;
+    text-decoration:none;
+    color:#000;
+    background:rgb(221, 221, 221);
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+  }
+
+  ul li {
+    margin:1em;    
+  }
+
+ 
