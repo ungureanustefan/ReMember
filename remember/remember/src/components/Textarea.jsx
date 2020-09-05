@@ -11,6 +11,8 @@ class Textarea extends Component {
             className="text"
             placeholder="Enter text here"
             text-align="center"
+            value={this.props.noteText}
+            onChange={this.props.onTextChange}
           ></textarea>
         </div>
       </div>

@@ -5,21 +5,28 @@ import Notes from "./Notes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { getNotes } from "../services/NotesService";
+import { addNote } from "../services/NotesService";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { names: [] };
-    getNotes().then((notes) => this.setState((state) => ({ names: notes })));
+    getNotes().then((notes) => this.setState({ names: notes }));
   }
+
+  onNoteAdd = (noteText) => {
+    const notesNew = [noteText, ...this.state.names];
+    this.setState({ notes: notesNew });
+    addNote(noteText);
+  };
 
   render() {
     return (
       <div>
         <Navbar />
         <Remember />
-        <TextAdd />
-        <Notes />
+        <TextAdd onNoteAdd={this.onNoteAdd} />
+        <Notes notesProp={this.state.names} />
         <Footer />
       </div>
     );

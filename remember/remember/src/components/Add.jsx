@@ -5,7 +5,9 @@ class Add extends Component {
     return (
       <div className="textarea">
         <div className="button">
-          <button className="add">Add</button>
+          <button className="add" onClick={this.props.onTextAdd}>
+            Add
+          </button>
         </div>
       </div>
     );

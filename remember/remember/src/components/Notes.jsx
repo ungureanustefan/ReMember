@@ -10,7 +10,7 @@ class Notes extends Component {
   }
 
   render() {
-    const arr = this.state.names;
+    const arr = this.props.notesProp;
     const noteArr = arr.map((i) => <Note name={i} />);
     return <ul className="list">{noteArr}</ul>;
   }
