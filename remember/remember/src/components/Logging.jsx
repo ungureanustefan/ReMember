@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 class Logging extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="flex-container">

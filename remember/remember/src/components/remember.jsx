@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 class Remember extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="remember">

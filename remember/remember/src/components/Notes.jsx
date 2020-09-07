@@ -5,10 +5,6 @@ import TextAdd from "./TextAdd";
 import { getNotes } from "../services/NotesService";
 
 class Notes extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const arr = this.props.notesProp;
     const noteArr = arr.map((i) => <Note name={i} />);

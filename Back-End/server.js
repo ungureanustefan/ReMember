@@ -18,6 +18,7 @@ app.use(parser.json());
 
 var noteSchema = new Schema({
   name: String,
+  date: String,
 });
 
 var Note = mongoose.model("Note", noteSchema, "NoteList");
