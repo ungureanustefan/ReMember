@@ -17,8 +17,6 @@ class App extends Component {
   onNoteAdd = (noteText) => {
     const notesNew = [noteText, ...this.state.names];
     this.setState({ names: notesNew });
-    console.log(this.state);
-    console.dir(this.state);
     addNote(noteText);
   };
 

@@ -6,6 +6,7 @@ const http = require("http");
 const port = 7787;
 const cors = require("cors");
 const mongoose = require("mongoose");
+const { isObject } = require("util");
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -19,6 +20,7 @@ app.use(parser.json());
 var noteSchema = new Schema({
   name: String,
   date: String,
+  ceva: String,
 });
 
 var Note = mongoose.model("Note", noteSchema, "NoteList");
@@ -34,7 +36,10 @@ app.route("/notes").get(function (req, res) {
 });
 
 app.post("/notes", (req, res) => {
-  var myNotes = new Note(req.body);
+  const noteObject = req.body;
+  noteObject.date = new Date().toISOString();
+  const myNotes = new Note(noteObject);
+
   myNotes.save().then((item) => {
     res.send("Note saved to database");
   });
