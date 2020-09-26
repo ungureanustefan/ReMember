@@ -6,7 +6,7 @@ const http = require("http");
 const port = 7787;
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { isObject } = require("util");
+const router = express.Router();
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -20,7 +20,6 @@ app.use(parser.json());
 var noteSchema = new Schema({
   name: String,
   date: String,
-  ceva: String,
 });
 
 var Note = mongoose.model("Note", noteSchema, "NoteList");
@@ -30,9 +29,11 @@ app.route("/").get(function (req, res) {
 });
 
 app.route("/notes").get(function (req, res) {
-  Note.find({}, function (err, data) {
-    res.send(data);
-  });
+  Note.find({})
+    .sort({ date: -1 })
+    .exec(function (err, data) {
+      res.send(data);
+    });
 });
 
 app.post("/notes", (req, res) => {
@@ -42,6 +43,12 @@ app.post("/notes", (req, res) => {
 
   myNotes.save().then((item) => {
     res.send("Note saved to database");
+  });
+});
+
+app.delete("/notes/:id", function (req, res, next) {
+  Note.findByIdAndRemove({ _id: req.params.id }).then(function (note) {
+    res.send(note);
   });
 });
 

@@ -1,7 +1,6 @@
 export function getNotes() {
   return fetch("http://localhost:7787/notes") // Promise<string>, "[{ "name": "N1" }, { "name": "N2" }]"
-    .then((r) => r.json()) // Promise<object[]>, [{ name: "N1" }, { name: "N2" }]
-    .then((r) => r.map((item) => item.name)); // Promise<string[]>, ["N1", "N2"]
+    .then((r) => r.json()); // Promise<object[]>, [{ name: "N1" }, { name: "N2" }]
 }
 
 export function addNote(note) {
@@ -11,5 +10,11 @@ export function addNote(note) {
     headers: {
       "Content-Type": "application/json",
     },
+  });
+}
+
+export function deleteNote(noteID) {
+  return fetch("http://localhost:7787/notes/" + noteID, {
+    method: "DELETE",
   });
 }

@@ -6,18 +6,32 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { getNotes } from "../services/NotesService";
 import { addNote } from "../services/NotesService";
+import { deleteNote } from "../services/NotesService";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { names: [] };
-    getNotes().then((notes) => this.setState({ names: notes }));
+    this.state = { notes: [] };
+  }
+
+  componentDidMount() {
+    getNotes().then((notes) => this.setState({ notes: notes }));
   }
 
   onNoteAdd = (noteText) => {
-    const notesNew = [noteText, ...this.state.names];
-    this.setState({ names: notesNew });
+    console.log(noteText);
+    const notesNew = [{ name: noteText }, ...this.state.notes];
+    console.log(this.state.notes);
+
+    this.setState({ notes: notesNew });
+    console.log(notesNew);
     addNote(noteText);
+  };
+
+  onNoteDelete = (noteID) => {
+    const notesNew = this.state.notes.filter((note) => note._id !== noteID);
+    this.setState({ notes: notesNew });
+    deleteNote(noteID);
   };
 
   render() {
@@ -26,7 +40,7 @@ class App extends Component {
         <Navbar />
         <Remember />
         <TextAdd onNoteAdd={this.onNoteAdd} />
-        <Notes notesProp={this.state.names} />
+        <Notes notesProp={this.state.notes} onNoteDelete={this.onNoteDelete} />
         <Footer />
       </div>
     );
