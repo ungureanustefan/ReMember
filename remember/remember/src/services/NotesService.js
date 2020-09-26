@@ -18,3 +18,10 @@ export function deleteNote(noteID) {
     method: "DELETE",
   });
 }
+
+export function archiveNote(noteID) {
+  return fetch("http://localhost:7787/notes/" + noteID, {
+    method: "POST",
+    body: { archive: true },
+  });
+}

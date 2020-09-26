@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Delete from "./Delete";
+import Archive from "./Archive";
 
 class Note extends Component {
   render() {
@@ -10,6 +11,9 @@ class Note extends Component {
         </a>
         <Delete
           onNoteDelete={() => this.props.onNoteDelete(this.props.note._id)}
+        />
+        <Archive
+          onNoteArchive={() => this.props.onNoteArchive(this.props.note._id)}
         />
       </li>
     );

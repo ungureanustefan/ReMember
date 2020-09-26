@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import { getNotes } from "../services/NotesService";
 import { addNote } from "../services/NotesService";
 import { deleteNote } from "../services/NotesService";
+import { archiveNote } from "../services/NotesService";
 
 class App extends Component {
   constructor(props) {
@@ -34,13 +35,23 @@ class App extends Component {
     deleteNote(noteID);
   };
 
+  onNoteArchive = (noteID) => {
+    const notesNew = this.state.notes.filter((note) => note._id !== noteID);
+    this.setState({ notes: notesNew });
+    archiveNote(noteID);
+  };
+
   render() {
     return (
       <div>
         <Navbar />
         <Remember />
         <TextAdd onNoteAdd={this.onNoteAdd} />
-        <Notes notesProp={this.state.notes} onNoteDelete={this.onNoteDelete} />
+        <Notes
+          notesProp={this.state.notes}
+          onNoteDelete={this.onNoteDelete}
+          onNoteArchive={this.onNoteArchive}
+        />
         <Footer />
       </div>
     );
