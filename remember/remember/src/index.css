@@ -31,9 +31,29 @@ body {
   height: 40px;
   width: 82px;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-style: solid;
   border-width: thin;
+}
+
+.images {
+  background-color: rgb(255, 99, 71);
+  font-size: 15px;
+  height: 40px;
+  width: 82px;
+  font-weight: normal;
+  margin-left: 5px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-style: solid;
+  border-width: thin;
+}
+
+.image {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  display: block;
 }
 
 .button {
@@ -148,7 +168,6 @@ ul li a {
   display: block;
   height: 10em;
   width: 10em;
-  padding: 1em;
 }
 
 ul li {

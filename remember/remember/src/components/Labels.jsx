@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-class Archived extends Component {
+class Labels extends Component {
   render() {
     return (
       <div className="flex-container">
         <p style={{ fontSize: "20px" }} className="homepage">
-          <a href="#" onClick={this.props.onToggleArchived}>
-            Archived
-          </a>
+          <a href="#">Labels</a>
         </p>
       </div>
     );
   }
 }
 
-export default Archived;
+export default Labels;

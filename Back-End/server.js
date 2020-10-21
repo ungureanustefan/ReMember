@@ -13,15 +13,22 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+mongoose.set('useFindAndModify', false);
 var Schema = mongoose.Schema;
 var app = express();
 app.use(cors());
-app.use(parser.json());
+app.use(parser.json({
+  limit: "50mb"
+}));
+
 
 var noteSchema = new Schema({
   name: String,
   date: String,
   archive: Boolean,
+  image: String,
+
+  label: String,
 });
 
 var Note = mongoose.model("Note", noteSchema, "NoteList");
@@ -38,12 +45,6 @@ app.route("/notes").get(function (req, res) {
     });
 });
 
-app.route("/archived").get(function (req, res) {
-  Note.find({ archive: true }).exec(function (err, data) {
-    res.send(data);
-  });
-});
-
 app.post("/notes", (req, res) => {
   const noteObject = req.body;
   noteObject.date = new Date().toISOString();
@@ -52,7 +53,7 @@ app.post("/notes", (req, res) => {
   const myNotes = new Note(noteObject);
 
   myNotes.save().then((item) => {
-    res.send("Note saved to database");
+    res.send(item);
   });
 });
 
@@ -62,8 +63,10 @@ app.delete("/notes/:id", function (req, res, next) {
   });
 });
 
+
+
 app.route("/notes/:id").post(function (req, res) {
-  Note.findOneAndUpdate({ _id: req.params.id }, { archive: true }).then(
+  Note.findOneAndUpdate({ _id: req.params.id }, req.body).then(
     function () {
       res.send("Note was updated");
     }
@@ -71,3 +74,4 @@ app.route("/notes/:id").post(function (req, res) {
 });
 
 app.listen(port);
+

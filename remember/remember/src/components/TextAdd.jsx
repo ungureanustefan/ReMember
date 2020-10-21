@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Textarea from "./Textarea";
 import Add from "./Add";
+import Images from "./Images";
 class TextAdd extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class TextAdd extends Component {
           noteText={this.state.currentText}
         />
         <Add onTextAdd={this.onTextAdd} />
+        <Images onImgAdd={this.props.onImgAdd} />
       </div>
     );
   }

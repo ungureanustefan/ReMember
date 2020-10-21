@@ -5,28 +5,46 @@ import Notes from "./Notes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { getNotes } from "../services/NotesService";
-import { addNote } from "../services/NotesService";
+import { addTextNote } from "../services/NotesService";
 import { deleteNote } from "../services/NotesService";
 import { archiveNote } from "../services/NotesService";
+import { addImgNote } from "../services/NotesService";
+import { labelAdd } from "../services/NotesService";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { notes: [] };
+    this.state = { notes: [], showArchived: false, label: "" };
   }
 
   componentDidMount() {
     getNotes().then((notes) => this.setState({ notes: notes }));
   }
 
-  onNoteAdd = (noteText) => {
-    console.log(noteText);
-    const notesNew = [{ name: noteText }, ...this.state.notes];
-    console.log(this.state.notes);
+  toggleArchived = (e) => {
+    this.setState({
+      showArchived: !this.state.showArchived,
+    });
+  };
 
-    this.setState({ notes: notesNew });
-    console.log(notesNew);
-    addNote(noteText);
+  componentDidUpdate() {
+    console.log(this.state.showArchived);
+  }
+
+  onLabelAdd = (label) => {};
+
+  onNoteAdd = (noteText) => {
+    addTextNote(noteText).then((note) => {
+      const notesNew = [note, ...this.state.notes];
+      this.setState({ notes: notesNew });
+    });
+  };
+  onImgAdd = (image) => {
+    console.log(image);
+    addImgNote(image).then((note) => {
+      const notesNew = [note, ...this.state.notes];
+      this.setState({ notes: notesNew });
+    });
   };
 
   onNoteDelete = (noteID) => {
@@ -36,22 +54,30 @@ class App extends Component {
   };
 
   onNoteArchive = (noteID) => {
-    const notesNew = this.state.notes.filter((note) => note._id !== noteID);
+    const notesNew = this.state.notes;
+    notesNew.filter((note) => note._id === noteID)[0].archive = true;
     this.setState({ notes: notesNew });
     archiveNote(noteID);
+  };
+  onChangeLabel = (noteID, newLabel) => {
+    const notesNew = this.state.notes.filter((note) => note._id !== noteID);
+    this.setState({ notes: notesNew });
+    labelAdd(noteID, newLabel);
   };
 
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar onToggleArchived={this.toggleArchived} />
         <Remember />
-        <TextAdd onNoteAdd={this.onNoteAdd} />
+        <TextAdd onNoteAdd={this.onNoteAdd} onImgAdd={this.onImgAdd} />
         <Notes
           notesProp={this.state.notes}
           onNoteDelete={this.onNoteDelete}
           onNoteArchive={this.onNoteArchive}
+          showArchived={this.state.showArchived}
         />
+        <ul id="img"></ul>
         <Footer />
       </div>
     );

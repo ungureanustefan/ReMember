@@ -1,0 +1,33 @@
+Images:
+    >save image as a note
+        >push images into notes array
+        >display images with img tag
+    >save image in the database
+        >upload to the server
+
+
+
+    Back-End:
+    >post request image
+
+
+
+Label Filter:
+    >create label add button
+    >insert label
+    >label add button dissapears
+        >place holder textarea
+        >display label
+        >clear (x) button
+            >only show (x) button when editing and label is not empty
+        >when click on label text go to editing mode
+    >label pushed to side menu in labels (dropdown)
+        > no pushing, label list derived from note labels
+    >when a label from the side menu is accessed, only items with the specific label will appear on the page
+        >clicking on a selected label disables items
+        > only one label filter can be active
+
+
+    Back-End:
+    >post request  label (edit note)
+    >retrieve notes per label, archived or not (only using the GET /notes endpoint)
