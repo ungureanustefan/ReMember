@@ -27,7 +27,6 @@ var noteSchema = new Schema({
   date: String,
   archive: Boolean,
   image: String,
-
   label: String,
 });
 
@@ -49,6 +48,7 @@ app.post("/notes", (req, res) => {
   const noteObject = req.body;
   noteObject.date = new Date().toISOString();
   noteObject.archive = false;
+  noteObject.label = "";
 
   const myNotes = new Note(noteObject);
 

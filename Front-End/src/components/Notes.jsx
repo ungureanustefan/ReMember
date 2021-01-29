@@ -15,9 +15,12 @@ class Notes extends Component {
       })
       .map((note) => (
         <Note
+          key={note._id}
           note={note}
           onNoteDelete={this.props.onNoteDelete}
           onNoteArchive={this.props.onNoteArchive}
+          onLabelUpdate={this.props.onLabelUpdate}
+
         />
       ));
     return <ul className="list">{noteArr}</ul>;

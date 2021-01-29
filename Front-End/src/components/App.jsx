@@ -4,17 +4,18 @@ import TextAdd from "./TextAdd";
 import Notes from "./Notes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import SideBar from "./SideBar"
 import { getNotes } from "../services/NotesService";
 import { addTextNote } from "../services/NotesService";
 import { deleteNote } from "../services/NotesService";
 import { archiveNote } from "../services/NotesService";
 import { addImgNote } from "../services/NotesService";
-import { labelAdd } from "../services/NotesService";
+import { labelAdd } from "../services/NotesService"
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { notes: [], showArchived: false, label: "" };
+    this.state = { notes: [], showArchived: false};
   }
 
   componentDidMount() {
@@ -31,7 +32,6 @@ class App extends Component {
     console.log(this.state.showArchived);
   }
 
-  onLabelAdd = (label) => {};
 
   onNoteAdd = (noteText) => {
     addTextNote(noteText).then((note) => {
@@ -59,11 +59,13 @@ class App extends Component {
     this.setState({ notes: notesNew });
     archiveNote(noteID);
   };
-  onChangeLabel = (noteID, newLabel) => {
-    const notesNew = this.state.notes.filter((note) => note._id !== noteID);
-    this.setState({ notes: notesNew });
-    labelAdd(noteID, newLabel);
-  };
+
+  onLabelUpdate = (noteID, label) => {
+    const notesNew = this.state.notes;
+    notesNew.filter((note) => note._id === noteID)[0].label = label
+    this.setState({ notes: notesNew});
+    labelAdd(noteID, label);
+  }
 
   render() {
     return (
@@ -76,6 +78,7 @@ class App extends Component {
           onNoteDelete={this.onNoteDelete}
           onNoteArchive={this.onNoteArchive}
           showArchived={this.state.showArchived}
+          onLabelUpdate={this.onLabelUpdate}
         />
         <ul id="img"></ul>
         <Footer />

@@ -4,7 +4,7 @@ class Labels extends Component {
     return (
       <div className="flex-container">
         <p style={{ fontSize: "20px" }} className="homepage">
-          <a href="#">Labels</a>
+          <a href="#" style={{textDecoration: "none"}}>Labels</a>
         </p>
       </div>
     );

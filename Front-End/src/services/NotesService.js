@@ -41,6 +41,9 @@ export function archiveNote(noteID) {
 export function labelAdd(noteID, label) {
   return fetch("http://localhost:7787/notes/" + noteID, {
     method: "POST",
-    body: { label: label }
+    body: JSON.stringify({ label: label }),
+    headers: {
+      "Content-Type": "application/json",
+    }
   });
 }

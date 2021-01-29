@@ -5,7 +5,6 @@ class Images extends Component {
   }
 
   readURL = () => {
-    console.log(this.fileInput);
     if (this.fileInput.files && this.fileInput.files[0]) {
       const reader = new FileReader();
 
