@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Archived from "./Archived";
 import Labels from "./Labels";
 import { MdMenu } from "react-icons/md";
+import Note from "./Note";
 
 
 class SideBar extends Component {
@@ -22,8 +23,11 @@ class SideBar extends Component {
 
       renderSidebar = () => {
           return <div className="sidepanel">
-  <a href="#" onClick={this.onXButton} style={{marginRight:"90px", color:"black", border:"0", textDecoration:"none"}}>╳</a>
- <h1 style={{color: "black"}}>Options</h1>
+ <div style={{transform: "translate(-45px, -5px)"}}>
+ <a href="#" onClick={this.onXButton} style={{color:"black", textDecoration:"none", fontSize:"16px"}}>╳</a>
+ <h1 style={{color: "black", float:"right", transform: "translate(-80px, -20px)"}}>Options</h1>
+ </div>
+ <h3 className="filters">Filters</h3>
 
   <Archived onToggleArchived={this.props.onToggleArchived} />
   <Labels />
@@ -31,7 +35,7 @@ class SideBar extends Component {
       }
 
       menuBar = () => {
-        return <div style={{marginLeft: "80px", marginTop:"17px"}}>
+        return <div style={{marginLeft: "40px", marginTop:"17px"}}>
               <button onClick={this.onSidebarOpen} style={{backgroundColor:"white", border:"0"}}>
                   <MdMenu style={{ height: "25px", width: "25px"}} />
               </button>

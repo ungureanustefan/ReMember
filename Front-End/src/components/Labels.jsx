@@ -3,12 +3,20 @@ class Labels extends Component {
   render() {
     return (
       <div className="flex-container">
-        <p style={{ fontSize: "20px" }} className="homepage">
-          <a href="#" style={{textDecoration: "none"}}>Labels</a>
-        </p>
+        <h3 className="homepage">
+          <p href="#" className="labels">Labels</p>
+
+
+          <label className="container-label" style={{fontSize:"17px"}}>Label 1
+          <input type="radio" style={{textDecoration: "none"}} />
+          <span className="checkmark-label"></span>
+          </label>
+
+          
+        </h3>
       </div>
     );
   }
 }
-
+ 
 export default Labels;

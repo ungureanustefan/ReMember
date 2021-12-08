@@ -4,7 +4,6 @@ import TextAdd from "./TextAdd";
 import Notes from "./Notes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import SideBar from "./SideBar"
 import { getNotes } from "../services/NotesService";
 import { addTextNote } from "../services/NotesService";
 import { deleteNote } from "../services/NotesService";

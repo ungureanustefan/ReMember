@@ -4,9 +4,11 @@ class Archived extends Component {
     return (
       <div className="flex-container">
         <p style={{ fontSize: "20px" }} className="homepage">
-          <a href="#" onClick={this.props.onToggleArchived} style={{textDecoration: "none"}}>
-            Archived
-          </a>
+        <label className="container">Archived
+          <input type="checkbox" onClick={this.props.onToggleArchived} style={{textDecoration: "none"}} />
+          <span className="checkmark"></span>
+        
+          </label>
         </p>
       </div>
     );
